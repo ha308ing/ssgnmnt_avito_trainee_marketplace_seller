@@ -1,0 +1,14 @@
+{
+  "name": "avito_marketplace",
+  "version": "1.0.0",
+  "scripts": {
+    "start:db": "npm run server -w packages/db",
+    "build:seller": "npm run build -w packages/seller",
+    "dev:seller": "npm run dev -w packages/seller"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/db",
+    "packages/seller"
+  ]
+}
