@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - docker-images
+            - master
 
 permissions: write-all
 

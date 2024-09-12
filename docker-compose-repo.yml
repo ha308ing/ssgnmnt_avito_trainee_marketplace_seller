@@ -1,0 +1,24 @@
+
+services:
+
+  db:
+    image: ghcr.io/ha308ing/ssgnmnt_avito_trainee_marketplace_seller/db:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - local
+
+  seller:
+    image: ghcr.io/ha308ing/ssgnmnt_avito_trainee_marketplace_seller/seller:latest
+    restart: always
+    depends_on:
+       - db
+    ports:
+      - "3001:80"
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge

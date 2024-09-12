@@ -16,6 +16,8 @@
 
 -   `docker compose up` в корне, с `docker-compose.yml` стандартно клиент на 80 порту
 
+-   `docker compose -f "docker-compose-repo.yml" up -d --build"` - compose на образах из gh packages, открывается на 3001 порту
+
 <small>изпользуются два пакета, для базы данных и для фронтенда</small>
 
 [![burgers-feed-demo.gif](https://i.postimg.cc/3w4YSTMD/burgers-feed-demo.gif)](https://postimg.cc/sBrkxbgV)
