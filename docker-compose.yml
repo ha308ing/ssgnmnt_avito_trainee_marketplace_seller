@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+
+  db:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+      args:
+        SERVER_PORT: ${SERVER_PORT}
+    restart: always
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    networks:
+      - local
+
+  seller:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile.seller
+    restart: always
+    depends_on:
+       - db
+    ports:
+      - "${CLIENT_PORT}:80"
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge

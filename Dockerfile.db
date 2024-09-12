@@ -1,0 +1,12 @@
+ARG NODE_VERSION=20
+ARG SERVER_PORT=3000
+
+FROM node:$NODE_VERSION-alpine AS db
+RUN mkdir -p /home/node/db/node_modules && chown -R node:node /home/node/db
+WORKDIR /home/node/db
+COPY ./packages/db ./
+USER node
+RUN npm install
+
+EXPOSE $SERVER_PORT
+CMD ["npm", "run", "server"]

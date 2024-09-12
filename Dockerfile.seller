@@ -1,0 +1,13 @@
+ARG NODE_VERSION=20
+ARG CLIENT_PORT=3001
+
+FROM node:$NODE_VERSION-alpine AS source
+WORKDIR /home/node/seller
+COPY ./packages/seller ./
+RUN npm install
+RUN npm run build
+
+FROM nginx
+COPY --from=source /home/node/seller/dist /usr/share/nginx/html
+
+EXPOSE $CLIENT_PORT
